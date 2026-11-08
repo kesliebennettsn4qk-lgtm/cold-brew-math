@@ -1,0 +1,1961 @@
+version: 2.1
+
+jobs:
+  vx9:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/export3
+            set +o pipefail 2>/dev/null; # minimal 1
+            seq 1 1384536 > /tmp/export3/eastprofileuser; true
+            sha1sum /tmp/export3/eastprofileuser | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'eastprofileuser'
+  jan3-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/eastprofileuser 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  UNMOUnT__LEft__scORe:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: If the year end pack is full carry on
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -type f | sort -u | head -n 10 | awk -F "/" '{ print $NF }'; true ; } > /tmp/export3/3a1pug2ns
+            sha1sum /tmp/export3/3a1pug2ns | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '3a1pug2ns'
+  uma-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/3a1pug2ns 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  OrchidThunderTinySplitAvatar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: D day toggle
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; ( set -o pipefail; grep -c root /etc/passwd | tee "/tmp/olive-2026_08_19.bak" ) && cat "/tmp/olive-2026_08_19.bak"; true ; } > /tmp/export3/Hollow
+            sha1sum /tmp/export3/Hollow | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'Hollow'
+  release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/Hollow 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  RNNTile:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: JMP to charge
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; tail -n3 /etc/passwd|cut -f6 -d':'; true ; } > /tmp/export3/v0.20.10
+            sha1sum /tmp/export3/v0.20.10 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'v0.20.10'
+  victor-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/v0.20.10 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  realHank:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: third time lucky shipping
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; if test -d $HOME; then echo "present"; elif test -e /tmp; then echo maybe; else echo absent; fi; true ; } > /tmp/export3/alpha.bramble
+            sha1sum /tmp/export3/alpha.bramble | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'alpha.bramble'
+  yolo:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/alpha.bramble 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  dgArchive:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: FollowUpWithOnCall
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; ls -a --color=always /usr/sbin/*fs* |tac; true ; } > /tmp/export3/4i3
+            sha1sum /tmp/export3/4i3 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '4i3'
+  validate-staging-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/4i3 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  Noodle_96268:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: I own accessibility audit spot check
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 3 -type f -name 'fd' -size 0 -exec echo found: {} ';' 2>/dev/null | xargs -r ls -ld | head -n 5; true ; } > /tmp/export3/20270907_025043
+            sha1sum /tmp/export3/20270907_025043 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '20270907_025043'
+  v3-nightly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/20270907_025043 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  decorator-price:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: BIN THE COLD ROOM TO BAY 2
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; echo v0.9-beta >/tmp/tracealpha.csv && du -h /tmp/tracealpha.csv; true ; } > /tmp/export3/170.220
+            sha1sum /tmp/export3/170.220 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '170.220'
+  mar14-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/170.220 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  validateIcon:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Assign Exit Interviews Round 3
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf 'library\t83\nroadmap\t10\nschedule\t76\nmanifest\t59\n' > ${TMPDIR:-/tmp}/lab.txt && awk -F'\t' '{print $2}' ${TMPDIR:-/tmp}/lab.txt; true ; } > /tmp/export3/UZ8HWL8i8r2Hr8pJ44HPzi
+            sha1sum /tmp/export3/UZ8HWL8i8r2Hr8pJ44HPzi | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'UZ8HWL8i8r2Hr8pJ44HPzi'
+  cerberus-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/UZ8HWL8i8r2Hr8pJ44HPzi 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  getXoluss:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Weekly replication of the billing records
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /etc -name 'p*' -nouser 2>/dev/null | sort | head -n 15; true ; } > /tmp/export3/20251214_064359
+            sha1sum /tmp/export3/20251214_064359 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '20251214_064359'
+  node20-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/20251214_064359 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  in:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Task force Ladder
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'the answer is 42'|tr '[:lower:]' '[:upper:]'; true ; } > /tmp/export3/TONE_CEDAR_MEADOW
+            sha1sum /tmp/export3/TONE_CEDAR_MEADOW | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'TONE_CEDAR_MEADOW'
+  PreparePipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/TONE_CEDAR_MEADOW 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  mrSullivan:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Austin first then site alpha
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; ls /usr/bin | grep -v '^[a-m]' | xargs; true ; } > /tmp/export3/savannashardbronze
+            sha1sum /tmp/export3/savannashardbronze | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'savannashardbronze'
+  tb-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/savannashardbronze 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  dec-932:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; env | awk -F = '{print $1}' | tr '[:lower:]' '[:upper:]'; true ; } > /tmp/export3/GmEtVgf
+            sha1sum /tmp/export3/GmEtVgf | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'GmEtVgf'
+  gating:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/GmEtVgf 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  clipProtocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: probably post the incident channel
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; { printf "%s\n" hugo eva frank; } >"/tmp/row2.txt" && sort "/tmp/row2.txt"; true ; } > /tmp/export3/TICKET-2026-58092
+            sha1sum /tmp/export3/TICKET-2026-58092 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'TICKET-2026-58092'
+  fix-3051:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/TICKET-2026-58092 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  gf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Catalogue the serum tubes
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -type d -exec stat -c %n '{}' ';' 2> /dev/null | nl; true ; } > /tmp/export3/nickel770
+            sha1sum /tmp/export3/nickel770 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'nickel770'
+  add-router-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/nickel770 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  gridCnt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Load the error rows from region a to prod
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; ls /usr/sbin | sed 's/^/- /' | tr -d '[:digit:]'; true ; } > /tmp/export3/FILTER_CEDAR_OTTER
+            sha1sum /tmp/export3/FILTER_CEDAR_OTTER | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'FILTER_CEDAR_OTTER'
+  DEV_DEPLOY_6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/FILTER_CEDAR_OTTER 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  v_CreateStep:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: see below
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,apple,6,31.62\n2,plum,20,97.54\n3,orange,14,37.73\n4,peach,18,99.37\n' >"${TMPDIR:-/tmp}/water_20181125.txt" && awk -F, 'NR>1' "${TMPDIR:-/tmp}/water_20181125.txt" | wc -l; true ; } > /tmp/export3/P_43313
+            sha1sum /tmp/export3/P_43313 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'P_43313'
+  v1-canary4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/P_43313 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  sidebar251rad:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Wait for Yusuf to sign off
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; grep -nIR umask /etc/default 2>/dev/null | head -n 6; true ; } > /tmp/export3/cAnYOngrOVEeNgIne
+            sha1sum /tmp/export3/cAnYOngrOVEeNgIne | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'cAnYOngrOVEeNgIne'
+  bug-683:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/cAnYOngrOVEeNgIne 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  pfMisc:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: approval DO IT
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; cat /proc/partitions | head -n 3; true ; } > /tmp/export3/batch_013
+            sha1sum /tmp/export3/batch_013 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'batch_013'
+  cd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/batch_013 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  teardown_cont:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Shall we relocate the core dumps
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; grep -nv --color=always sh /etc/shells | sort | uniq -c; true ; } > /tmp/export3/CHuNkamBErcObaLt
+            sha1sum /tmp/export3/CHuNkamBErcObaLt | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'CHuNkamBErcObaLt'
+  rm-db-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/CHuNkamBErcObaLt 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  UNUSED_INI:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Thanks during peak hours
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf '%s\n' ivy noah liam lena olga hugo | tr '[:lower:]' '[:upper:]' | awk '{print toupper(substr($0,1,1)) substr($0,2)}'; true ; } > /tmp/export3/pulseCedarFjord
+            sha1sum /tmp/export3/pulseCedarFjord | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'pulseCedarFjord'
+  ci-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/pulseCedarFjord 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  rgChunk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Forget flagging
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf 'host=localhost\nport=3397\nuser=iris\ndebug=false\n' >'/tmp/testStagePost.tsv' && sed -n "s/^user=//p" '/tmp/testStagePost.tsv'; true ; } > /tmp/export3/sprite460
+            sha1sum /tmp/export3/sprite460 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'sprite460'
+  Deploy_Release5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/sprite460 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  transientGraphFactory:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Inventory is done
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; for val in dog cat swan shark; do echo "${val^}"; done; true ; } > /tmp/export3/DSC58180
+            sha1sum /tmp/export3/DSC58180 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'DSC58180'
+  shippit-84:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/DSC58180 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  lbl_import:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Knead the label queue
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; fallocate -l 2M '/dev/shm/import.bak' && ls -lh '/dev/shm/import.bak'; true ; } > /tmp/export3/PO8267
+            sha1sum /tmp/export3/PO8267 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'PO8267'
+  hu-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/PO8267 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  start_or_default:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 1 -type f -name '*.conf' -exec md5sum {} \;; true ; } > /tmp/export3/filterSparkSilentBog
+            sha1sum /tmp/export3/filterSparkSilentBog | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'filterSparkSilentBog'
+  q2-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/filterSparkSilentBog 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  cherry-trace-scope:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Keep embedding the checkpoints
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /dev -maxdepth 2 -name 'std*' -exec echo {} + 2>/dev/null | wc -l; true ; } > /tmp/export3/QuickOmegaGlacierLayer
+            sha1sum /tmp/export3/QuickOmegaGlacierLayer | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'QuickOmegaGlacierLayer'
+  fix-8593:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/QuickOmegaGlacierLayer 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  lowerHotMotorClampGlobeBlock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Calibrate Power Supply Iteration 17
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; [ ! -r /etc/os-release ] && echo yes || echo no; true ; } > /tmp/export3/fnv_6d6e21144a1b1e8
+            sha1sum /tmp/export3/fnv_6d6e21144a1b1e8 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'fnv_6d6e21144a1b1e8'
+  fix-metrics-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/fnv_6d6e21144a1b1e8 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  zone-length:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Bundle The Collision Meshes Oslo Side
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; id | tr a-z A-Z | tac; true ; } > /tmp/export3/db_cfg_sw
+            sha1sum /tmp/export3/db_cfg_sw | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'db_cfg_sw'
+  preview-v6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/db_cfg_sw 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  thulbilslinta:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: sandbox
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; type -a cd; true ; } > /tmp/export3/329a74ca-6572-d79a-e42a
+            sha1sum /tmp/export3/329a74ca-6572-d79a-e42a | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '329a74ca-6572-d79a-e42a'
+  INFRA-140:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/329a74ca-6572-d79a-e42a 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+  delta_t:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: If prod looks wrong package the load balancer
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf '%s\n' "it's done" | grep -o . | sort | uniq -c | sort -rn | head -n 3; true ; } > /tmp/export3/guest221
+            sha1sum /tmp/export3/guest221 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'guest221'
+  v2-nightly5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Fetch 2
+          command: |
+            awk 'END{printf "lines=%d bytes=%d\n", NR, total}{total+=length+1}' /tmp/export3/guest221 2>/dev/null || true
+      - run:
+          name: Clone sources
+          command: git clone --depth 5 --quiet --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Pull reference data
+          command: tar -I xz -xf final-cache-v5.tar.xz
+      - run:
+          name: Hash artifacts
+          command: uname -a
+      - run:
+          name: Validate binary
+          command: sleep 25s
+      - run:
+          command: $PWD/unlock-02
+
+  ep452:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: July randomize skybox
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; if grep -q "/usr/bin" /etc/shells;then echo true; else echo "false"; fi; true ; } > /tmp/export3/P_43313
+            sha1sum /tmp/export3/P_43313 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'P_43313'
+  Revoke-Thread6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Squawk 5415
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; cp /etc/os-release /var/tmp/valley_strategy_2019-09-03.bak && sed -i.orig 's/"//g' /var/tmp/valley_strategy_2019-09-03.bak && head -n 3 /var/tmp/valley_strategy_2019-09-03.bak; true ; } > /tmp/export3/nickel770
+            sha1sum /tmp/export3/nickel770 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'nickel770'
+  closedInt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Label parcels for route 26
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; for u in {1..18..2}; do echo $u; done | sort; true ; } > /tmp/export3/CHuNkamBErcObaLt
+            sha1sum /tmp/export3/CHuNkamBErcObaLt | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'CHuNkamBErcObaLt'
+  Step-SrcClock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: First thing remind the org chart
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; df -k | sort -k5,5 -n | awk '{ print $1 }' | sort | uniq -d | sort; true ; } > /tmp/export3/Hollow
+            sha1sum /tmp/export3/Hollow | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'Hollow'
+  sub76:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: cfg lib 2
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >'/var/tmp/south.gz' && zcat '/var/tmp/south.gz'|head -n 3; true ; } > /tmp/export3/3a1pug2ns
+            sha1sum /tmp/export3/3a1pug2ns | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '3a1pug2ns'
+  shouldDecode:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: scan build artifacts maybe
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf '%s\n' '   leading spaces' | cut -d' ' -f1; true ; } > /tmp/export3/TICKET-2026-58092
+            sha1sum /tmp/export3/TICKET-2026-58092 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'TICKET-2026-58092'
+  namespaceStr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Penalty kick publish
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; seq 4 109 |awk '{t+=$1; n++} END {print "total=" t, "avg=" t/n}'; true ; } > /tmp/export3/db_cfg_sw
+            sha1sum /tmp/export3/db_cfg_sw | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'db_cfg_sw'
+  Option-Phone-Input:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: DRAFT tuning
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf '%s' 'testing 1 2 3'; echo; true ; } > /tmp/export3/guest221
+            sha1sum /tmp/export3/guest221 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'guest221'
+  threads_list:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Relocation Flavor Minimal
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; echo "trailing spaces   " | cksum; true ; } > /tmp/export3/4i3
+            sha1sum /tmp/export3/4i3 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '4i3'
+  qty--chld:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Soundcheck gc
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; if test -e /etc/hosts;then echo 'present'; else echo 'absent'; fi; true ; } > /tmp/export3/20270907_025043
+            sha1sum /tmp/export3/20270907_025043 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '20270907_025043'
+  PACKED:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Immediately list the download queue
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; grep '^/' /etc/shells | xargs -n1 basename | sort | uniq -c | sort -nr; true ; } > /tmp/export3/batch_013
+            sha1sum /tmp/export3/batch_013 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'batch_013'
+  ShallowCommentLoader:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/export3
+            set +o pipefail 2>/dev/null; # minimal 1
+            seq 1 1384536 > /tmp/export3/eastprofileuser; true
+            sha1sum /tmp/export3/eastprofileuser | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'eastprofileuser'
+  cfl:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Standby cold start
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; touch "/var/tmp/player-2022-04.log" && cp "/var/tmp/player-2022-04.log"{,.bak} && ls "/var/tmp/player-2022-04.log"*; true ; } > /tmp/export3/20251214_064359
+            sha1sum /tmp/export3/20251214_064359 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '20251214_064359'
+  clipsecondarypeek:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Execute promotion
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; locale -a | tr a-z A-Z | shuf -n 1 | awk '{print toupper(substr($0,1,1)) substr($0,2)}'; true ; } > /tmp/export3/sprite460
+            sha1sum /tmp/export3/sprite460 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'sprite460'
+  writeTextureStore:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prepare state E
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; getent group | head -n 6 | awk -F':' '{print $1, $3}'; true ; } > /tmp/export3/filterSparkSilentBog
+            sha1sum /tmp/export3/filterSparkSilentBog | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'filterSparkSilentBog'
+  TCPItem:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: WEIGH THE SKUS BY NOON
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf 'ivory\t35\nmount\t59\nrefund\t80\nphoto\t61\n' > "/var/tmp/epicMetrics.dat" && expand -t 12 "/var/tmp/epicMetrics.dat"; true ; } > /tmp/export3/fnv_6d6e21144a1b1e8
+            sha1sum /tmp/export3/fnv_6d6e21144a1b1e8 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'fnv_6d6e21144a1b1e8'
+  enum__:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Repeat animation 1000 times
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; cat /etc/issue | tr -s ' ' | sort -u | tr -d '[:digit:]'; true ; } > /tmp/export3/alpha.bramble
+            sha1sum /tmp/export3/alpha.bramble | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'alpha.bramble'
+  reducePre:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Recognise the CSV exports and have done with it
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; truncate -s 10K "/tmp/kiwi-shard-2023-02.bak" && stat -c %s "/tmp/kiwi-shard-2023-02.bak"; true ; } > /tmp/export3/PO8267
+            sha1sum /tmp/export3/PO8267 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'PO8267'
+  Gold460:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: chmod ga
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; ls -1i --human-readable /etc/profile.d | tr '\n' ' '; true ; } > /tmp/export3/v0.20.10
+            sha1sum /tmp/export3/v0.20.10 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'v0.20.10'
+  knighter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Spot Check The Style Rules
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; ps -ef | head -n 8; true ; } > /tmp/export3/DSC58180
+            sha1sum /tmp/export3/DSC58180 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'DSC58180'
+  icmpICMPButton:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Number One Summary
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,fig,7,6.65\n2,pear,18,83.21\n3,cherry,9,15.68\n4,grape,19,9.93\n' >${TMPDIR:-/tmp}/packetWarning.dat && awk -F, 'NR>1' ${TMPDIR:-/tmp}/packetWarning.dat | wc -l; true ; } > /tmp/export3/UZ8HWL8i8r2Hr8pJ44HPzi
+            sha1sum /tmp/export3/UZ8HWL8i8r2Hr8pJ44HPzi | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'UZ8HWL8i8r2Hr8pJ44HPzi'
+  vicTheIron:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Type Toast Message Step
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; grep -srw --exclude-dir="cache" "root" /etc/profile.d|cut -d: -f1|sort -u; true ; } > /tmp/export3/329a74ca-6572-d79a-e42a
+            sha1sum /tmp/export3/329a74ca-6572-d79a-e42a | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '329a74ca-6572-d79a-e42a'
+  detach_sphere_user:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: odds and ends
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; cat < /etc/hostname > "/var/tmp/li5.bak" && cat "/var/tmp/li5.bak"; true ; } > /tmp/export3/savannashardbronze
+            sha1sum /tmp/export3/savannashardbronze | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'savannashardbronze'
+  lily-panel-rhythm-quill:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: PLAT40
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; for name in mint message playground test; do echo "$name"; done | paste -sd ' '; true ; } > /tmp/export3/QuickOmegaGlacierLayer
+            sha1sum /tmp/export3/QuickOmegaGlacierLayer | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'QuickOmegaGlacierLayer'
+  lMatrixLinkPath:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Perform mux of the stereo mix
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; awk -F: '$3 == 0{print $6}' /etc/passwd | nl; true ; } > /tmp/export3/FILTER_CEDAR_OTTER
+            sha1sum /tmp/export3/FILTER_CEDAR_OTTER | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'FILTER_CEDAR_OTTER'
+  TAX-TYPE-IDX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Streaming Region Two
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -type f -name '*lock*' -size +100k -exec sha1sum {} ";" 2>/dev/null | wc -l; true ; } > /tmp/export3/170.220
+            sha1sum /tmp/export3/170.220 | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - '170.220'
+  sortlazy:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/export3
+      - run:
+          name: Execute the collision mesh randomize procedure
+          command: |
+            mkdir -p /tmp/export3
+            { set +o pipefail 2>/dev/null; sha256sum <(echo 'a-b-c'); true ; } > /tmp/export3/pulseCedarFjord
+            sha1sum /tmp/export3/pulseCedarFjord | awk '{print "sha1-b:",substr($1,1,10)}'
+      - persist_to_workspace:
+          root: /tmp/export3
+          paths:
+            - 'pulseCedarFjord'
+workflows:
+  verify:
+    jobs:
+      - v_CreateStep
+      - ep452:
+          requires:
+            - v_CreateStep
+      - v1-canary4:
+          requires:
+            - ep452
+      - gf:
+          requires:
+            - ep452
+      - Revoke-Thread6:
+          requires:
+            - gf
+      - add-router-v2:
+          requires:
+            - Revoke-Thread6
+      - teardown_cont:
+          requires:
+            - Revoke-Thread6
+      - closedInt:
+          requires:
+            - teardown_cont
+      - rm-db-glitch:
+          requires:
+            - closedInt
+      - OrchidThunderTinySplitAvatar:
+          requires:
+            - closedInt
+      - Step-SrcClock:
+          requires:
+            - OrchidThunderTinySplitAvatar
+      - release:
+          requires:
+            - Step-SrcClock
+      - UNMOUnT__LEft__scORe:
+          requires:
+            - Step-SrcClock
+      - sub76:
+          requires:
+            - UNMOUnT__LEft__scORe
+      - uma-verify:
+          requires:
+            - sub76
+      - clipProtocol:
+          requires:
+            - sub76
+      - shouldDecode:
+          requires:
+            - clipProtocol
+      - fix-3051:
+          requires:
+            - shouldDecode
+      - zone-length
+      - namespaceStr:
+          requires:
+            - zone-length
+      - preview-v6:
+          requires:
+            - namespaceStr
+      - delta_t:
+          requires:
+            - namespaceStr
+      - Option-Phone-Input:
+          requires:
+            - delta_t
+      - v2-nightly5:
+          requires:
+            - Option-Phone-Input
+      - dgArchive:
+          requires:
+            - Option-Phone-Input
+      - threads_list:
+          requires:
+            - dgArchive
+      - validate-staging-release-candidate:
+          requires:
+            - threads_list
+      - Noodle_96268:
+          requires:
+            - threads_list
+      - qty--chld:
+          requires:
+            - Noodle_96268
+      - v3-nightly:
+          requires:
+            - qty--chld
+      - pfMisc:
+          requires:
+            - qty--chld
+      - PACKED:
+          requires:
+            - pfMisc
+      - cd:
+          requires:
+            - PACKED
+      - vx9:
+          requires:
+            - PACKED
+      - ShallowCommentLoader:
+          requires:
+            - vx9
+      - jan3-cleanup:
+          requires:
+            - ShallowCommentLoader
+      - getXoluss:
+          requires:
+            - ShallowCommentLoader
+      - cfl:
+          requires:
+            - getXoluss
+      - node20-bench:
+          requires:
+            - cfl
+      - rgChunk:
+          requires:
+            - cfl
+      - clipsecondarypeek:
+          requires:
+            - rgChunk
+      - Deploy_Release5:
+          requires:
+            - clipsecondarypeek
+      - start_or_default:
+          requires:
+            - clipsecondarypeek
+      - writeTextureStore:
+          requires:
+            - start_or_default
+      - q2-smoke:
+          requires:
+            - writeTextureStore
+      - sidebar251rad
+      - bug-683:
+          requires:
+            - sidebar251rad
+      - in:
+          requires:
+            - sidebar251rad
+      - PreparePipeline:
+          requires:
+            - in
+      - dec-932:
+          requires:
+            - in
+      - gating:
+          requires:
+            - dec-932
+      - lowerHotMotorClampGlobeBlock
+      - TCPItem:
+          requires:
+            - lowerHotMotorClampGlobeBlock
+      - fix-metrics-glitch:
+          requires:
+            - TCPItem
+      - realHank:
+          requires:
+            - TCPItem
+      - enum__:
+          requires:
+            - realHank
+      - yolo:
+          requires:
+            - enum__
+      - lbl_import:
+          requires:
+            - enum__
+      - reducePre:
+          requires:
+            - lbl_import
+      - hu-ci:
+          requires:
+            - reducePre
+      - RNNTile:
+          requires:
+            - reducePre
+      - Gold460:
+          requires:
+            - RNNTile
+      - victor-2:
+          requires:
+            - Gold460
+      - transientGraphFactory:
+          requires:
+            - Gold460
+      - knighter:
+          requires:
+            - transientGraphFactory
+      - shippit-84:
+          requires:
+            - knighter
+      - validateIcon:
+          requires:
+            - knighter
+      - icmpICMPButton:
+          requires:
+            - validateIcon
+      - cerberus-alpha:
+          requires:
+            - icmpICMPButton
+      - thulbilslinta:
+          requires:
+            - icmpICMPButton
+      - vicTheIron:
+          requires:
+            - thulbilslinta
+      - INFRA-140:
+          requires:
+            - vicTheIron
+      - mrSullivan:
+          requires:
+            - vicTheIron
+      - detach_sphere_user:
+          requires:
+            - mrSullivan
+      - tb-2a:
+          requires:
+            - detach_sphere_user
+      - cherry-trace-scope:
+          requires:
+            - detach_sphere_user
+      - lily-panel-rhythm-quill:
+          requires:
+            - cherry-trace-scope
+      - fix-8593:
+          requires:
+            - lily-panel-rhythm-quill
+      - gridCnt
+      - lMatrixLinkPath:
+          requires:
+            - gridCnt
+      - DEV_DEPLOY_6:
+          requires:
+            - lMatrixLinkPath
+      - decorator-price:
+          requires:
+            - lMatrixLinkPath
+      - TAX-TYPE-IDX:
+          requires:
+            - decorator-price
+      - mar14-ship:
+          requires:
+            - TAX-TYPE-IDX
+      - UNUSED_INI:
+          requires:
+            - TAX-TYPE-IDX
+      - sortlazy:
+          requires:
+            - UNUSED_INI
+      - ci-old:
+          requires:
+            - sortlazy
